@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --text-color: #333;
+    --border-color: #ddd;
+    --error-color: #ff0000;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h2{
+    text-align: center;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+
+.form-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h2, h3 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+
+.form-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+
+.photo-upload {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
+.photo-preview img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+
+.upload-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.pbtn{
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+.vbtn{
+    display: inline;
+   
+    width: 50%;
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    margin-left: 5rem;
+}
+.file-label {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+
+/* Hide file input */
+input[type="file"] {
+    display: none;
+}
+.radio-label{
+    display: inline;
+}
+.required::after {
+    content: ' *';
+    color: red;
+  }
+ .btn-otp-send-otp{
+    display: inline;
+ 
+   
+ }
+ .btn-otp-verify-otp{
+    display: inline;
+
+
+ }
+ .btns{
+
+
+    text-align: center;
+    margin-top: 1rem;
+    width: 20%;
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-left: 45%;
+ 
+ }
+ label#sameAddress{
+    display: inline;
+   margin-top: 10%;
+
+
+}
+body{
+    background-image: url('cons.webp');
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container" id="signup-form">
+            <h2>Sign Up</h2>
+            <form id="registrationForm" action="#" method="POST" enctype="multipart/form-data">
+                <!-- User Type Selection -->
+                <div class="user-type">
+                   
+                    <div class="radio-group">
+                        <h3 class="radio-label">Create Login ID for:</h3>
+                        <label class="radio-label">
+                            <input type="radio" name="userType" value="contractor" checked required>
+                            Contractor
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="userType" value="worker">
+                            Worker
+                        </label>
+                    </div>
+                </div>
+<br>
+                <!-- Profile Photo Section -->
+                <div class="photo-upload">
+                    <div class="photo-preview">
+                        <img id="preview" src="image.png" alt="Profile Photo">
+                    </div>
+                    <div class="upload-options">
+                        <label for="ta-photo" class="pbtn">Take Photo</label>
+                        <input type="file" accept="image/*" capture="camera" id="ta-photo">
+                       
+                        <label for="up-photo" class="pbtn">Upload Photo</label>
+                        <input type="file" accept="image/*" id="up-photo">
+                    </div>
+                </div>
+
+
+                <!-- Personal Details Section -->
+                <div class="form-section">
+                    <h3>Personal Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" placeholder="Enter full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Office Address Section -->
+                <div class="form-section" id="office-address" >
+                    <h3>Office Address</h3>
+                    <div class="address-form" id="office-address">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="office-add">Office Address</label>
+                                <textarea id="office-add" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="office-city">City</label>
+                                <input type="text" id="office-city" placeholder="Enter city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="office-state">State</label>
+                                <select id="office-state" required>
+                                    <option value="">Select State</option>
+                                    <option value="AP">Andhra Pradesh</option>
+                                    <option value="AR">Arunachal Pradesh</option>
+                                    <!-- Add other states -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="office-pincode">Pincode</label>
+                                <input type="text" id="office-pincode" pattern="[0-9]{6}" maxlength="6" placeholder="Enter pincode" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Residence Address Section -->
+                <div class="form-section">
+                    <h3>Residence Address</h3>
+                    <div class="same-address">
+                       
+                        <label for="sameAddress" id="sameAddress">Same as office address</label>
+                        <input type="checkbox" id="sameAddress">
+                    </div>
+                    <div class="address-form" id="residence-address">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="residence-add">Residence Address</label>
+                                <textarea id="residence-add" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="residence-city">City</label>
+                                <input type="text" id="residence-city" placeholder="Enter city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="residence-state">State</label>
+                                <select id="residence-state" required>
+                                    <option value="">Select State</option>
+                                    <option value="AP">Andhra Pradesh</option>
+                                    <option value="AR">Arunachal Pradesh</option>
+                                    <!-- Add other states -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="residence-pincode">Pincode</label>
+                                <input type="text" id="residence-pincode" pattern="[0-9]{6}" maxlength="6" placeholder="Enter pincode" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Account Details Section -->
+                <div class="form-section">
+                    <h3>Account Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="registration-type">Registration Type</label>
+                            <select id="registration-type" required>
+                                <option value="regular">Regular</option>
+                                <option value="unregistered">Unregistered</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gstin">GSTIN Number</label>
+                            <input type="text" id="gstin" placeholder="Enter GSTIN">
+                        </div>
+                        <div class="form-group">
+                            <label for="pan">PAN Number</label>
+                            <input type="text" id="pan" placeholder="Enter PAN" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="aadhar">Aadhar Number</label>
+                            <input type="text" id="aadhar" placeholder="Enter Aadhar" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Bank Details Section -->
+                <div class="form-section" id="bank">
+                    <h3>Bank Details</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bank-name">Name of the Bank</label>
+                            <input type="text" id="bank-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="branch-name">Name of the Branch</label>
+                            <input type="text" id="branch-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ifsc">IFSC Code</label>
+                            <input type="text" id="ifsc" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="account-no">Account Number</label>
+                            <input type="text" id="account-no" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-account">Confirm Account Number</label>
+                            <input type="text" id="confirm-account" required>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Document Upload Section -->
+                <div class="form-section">
+                    <h3>Document Upload</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="address-proof" class="file-label">
+                                Address Proof (Residence)
+                                <input type="file" id="address-proof" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="pan-card" class="file-label">
+                                PAN Card
+                                <input type="file" id="pan-card" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="gstin-file" class="file-label">
+                                GSTIN File
+                                <input type="file" id="gstin-file" accept=".pdf,.jpg,.jpeg,.png">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="bank-proof" class="file-label">
+                                Bank Account Proof
+                                <input type="file" id="bank-proof" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Login Credentials -->
+                <div class="form-section">
+                    <h3>Login Credentials</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" pattern="[0-9]{10}" maxlength="10" placeholder="Enter mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                        </div>
+                       
+                                <div class="form-group">
+                                    <label for="otp">OTP Verification</label>
+                           
+                                        <input type="text" id="otp" placeholder="Enter OTP" maxlength="6" required>
+                                        <button type="button" class="btn-otp-send-otp" id="sendOtpBtn">Send OTP</button>
+                                    <button type="button" class="btn-otp-verify-otp" id="verifyOtpBtn">Verify OTP</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btns" >Sign Up</button>
+                            <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+                        </div>
+                    </div>
+            </form>
+           
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
